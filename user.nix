@@ -22,6 +22,7 @@
         ++ pkgs.lib.optional config.networking.networkmanager.enable "networkmanager"
         ;
       home = "/home/hauser";
+      shell = pkgs.zsh;
       createHome = true;
       initialPassword = lib.mkForce "hauser";
     };
