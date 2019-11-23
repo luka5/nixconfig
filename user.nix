@@ -23,16 +23,13 @@
         ;
       home = "/home/hauser";
       createHome = true;
-      shell = "/run/current-system/sw/bin/zsh";
       initialPassword = lib.mkForce "hauser";
-      openssh.authorizedKeys.keys = [
-      ];
     };
     extraGroups.hauser.gid = 1001;
   };
 
   programs.vim.defaultEditor = true;
 
-  services.xserver.layout = "eu"; # should be part of hardware config
+  services.xserver.layout = "eu";
 }
 

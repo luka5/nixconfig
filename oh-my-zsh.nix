@@ -8,7 +8,7 @@
       oh-my-zsh
     ];
     shells = [
-      "${pkgs.zsh}/bin/zsh"
+      pkgs.zsh
       "/run/current-system/sw/bin/zsh"
     ];
   };
@@ -20,6 +20,13 @@
       enable = true;
       plugins = ["git"];
     };
+
+    interactiveShellInit = ''
+      source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
+
+      zstyle ':prompt:grml:left:items:user' pre '%F{green}%B'
+    '';
+
     promptInit = ""; # Clear this to avoid a conflict with oh-my-zsh
   };
 }

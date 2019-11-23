@@ -19,22 +19,19 @@
       git
       curl
       wget
-
     ];
 
   };
 
-  programs.zsh.enable = true;
-  programs.zsh.interactiveShellInit = ''
-    source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
+  virtualisation = {
+    virtualbox = {
+        host.enable = true;
+    };
 
-    zstyle ':prompt:grml:left:items:user' pre '%F{green}%B'
-  '';
-  programs.zsh.promptInit = "";
-
-
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.extraOptions = "--data-root /home/docker";
+    docker = {
+        enable = true;
+        extraOptions = "--data-root /home/docker";
+    };
+  };
 
 }
