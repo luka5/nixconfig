@@ -19,6 +19,8 @@
       git
       curl
       wget
+
+      qrencode
     ];
 
   };
