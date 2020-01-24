@@ -12,7 +12,6 @@
       group = "hauser";
       uid = 1001;
       extraGroups = [
-        "myconfig"
         "wheel"
         "audio" "video"
         "dialout"

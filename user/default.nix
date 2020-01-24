@@ -19,8 +19,10 @@
       git
       curl
       wget
+      docker-compose
 
       qrencode
+      signal-desktop
     ];
 
   };
