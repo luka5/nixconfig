@@ -10,7 +10,7 @@
     extraUsers.hauser = {
       isNormalUser = true;
       group = "hauser";
-      uid = 1001;
+      uid = 1000;
       extraGroups = [
         "wheel"
         "audio" "video"
@@ -25,11 +25,10 @@
       createHome = true;
       initialPassword = lib.mkForce "hauser";
     };
-    extraGroups.hauser.gid = 1001;
+    extraGroups.hauser.gid = 1000;
   };
 
   programs.vim.defaultEditor = true;
 
   services.xserver.layout = "eu";
 }
-
