@@ -14,6 +14,7 @@
       thunderbird
       slack
       keepassxc
+      gnupg22
 
       idea.idea-ultimate
       git
@@ -23,6 +24,17 @@
 
       qrencode
       signal-desktop
+
+      libreoffice
+      citrix_workspace
+      okular
+      ark
+      inkscape
+      gimp
+
+      kazam
+      vlc
+
     ];
 
   };
