@@ -15,7 +15,7 @@
       slack
       keepassxc
       gnupg22
-
+      partition-manager
       idea.idea-ultimate
       git
       curl
