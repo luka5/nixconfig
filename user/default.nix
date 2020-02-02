@@ -21,6 +21,7 @@
       curl
       wget
       docker-compose
+      exfat
 
       qrencode
       signal-desktop
