@@ -22,6 +22,7 @@
       wget
       docker-compose
       exfat
+      restic
 
       qrencode
       signal-desktop
