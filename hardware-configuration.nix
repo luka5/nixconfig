@@ -13,16 +13,13 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/985a610d-b94f-42ab-a79b-a10fa7327afc";
-      fsType = "ext4";
-    };
+  fileSystems."/".device = "/dev/mapper/crypted";
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/a1124a9e-3b30-4690-8c7f-1eb89b9c58cd";
+  boot.initrd.luks.devices."crypted".device = "/dev/nvme0n1p2";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E96D-9290";
-      fsType = "vfat";
+    { device = "/dev/nvme0n1p1";
+      fsType = "fat";
     };
 
   swapDevices = [ ];
