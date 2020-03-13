@@ -19,7 +19,7 @@
 
   fileSystems."/boot" =
     { device = "/dev/nvme0n1p1";
-      fsType = "fat";
+      fsType = "vfat";
     };
 
   swapDevices = [ ];

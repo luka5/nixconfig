@@ -1,15 +1,14 @@
 # Installing NixOS
 
-1. Install git
-```
-nix-envs --install git
-```
-
-2. Switch to use root
+1. Switch to use root
 ```
 sudo --shell
 ```
 
+2. Install git
+```
+nix-env --install git
+```
 
 3. Prepare Filesystem
 ```
@@ -40,7 +39,7 @@ nixos-generate-config --root /mnt
 
 6. Customize Config
 ```
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hardware-configuration.nix.default
+mv /mnt/etc/nixos /mnt/etc/nixos-default
 git clone https://github.com/luka5/nixconfig /mnt/etc/nixos/
 ```
 Manually check cloned and automatically created files in `/mnt/etc/nixos/`.
