@@ -8,9 +8,11 @@
       BROWSER = "${pkgs.chromium}/bin/chromium-browser";
     };
 
+
     systemPackages = with pkgs; [
       yakuake
       chromium
+      firefox
       thunderbird
       slack
       keepassxc
@@ -23,20 +25,32 @@
       docker-compose
       exfat
       restic
+      kdialog
+      jq
+      libsecret
+      xdotool
+      xclip
 
       qrencode
       signal-desktop
 
       libreoffice
       citrix_workspace
+      xfce.xfce4-screenshooter
+      tesseract
       okular
       ark
       inkscape
       gimp
+      kate
 
       kazam
       vlc
+      spotify
+      zoom-us
 
+      pavucontrol
+      htop
     ];
 
   };
@@ -51,5 +65,12 @@
         extraOptions = "--data-root /home/docker";
     };
   };
+
+  programs.adb.enable = true;
+  users.users.hauser.extraGroups = ["adbusers"];
+
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 
 }
