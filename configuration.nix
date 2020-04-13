@@ -73,7 +73,18 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  };
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.extraConfig = "
+  [General]
+  Enable=Source,Sink,Media,Socket
+";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -86,6 +97,8 @@
   # Enable the KDE Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+
+  services.gnome3.gnome-keyring.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
