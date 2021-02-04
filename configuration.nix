@@ -9,7 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./user
+      ./v4l2.nix
     ];
+
+  v4l2 = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -23,7 +26,7 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp4s0.useDHCP = true;
+  networking.interfaces.wlp58s0.useDHCP = true;
   networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
@@ -31,6 +34,11 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "chromium-81.0.4044.138"
+    "chromium-unwrapped-81.0.4044.138"
+   ];
 
   # Select internationalisation properties.
   # i18n = {
@@ -51,7 +59,7 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
 
@@ -69,6 +77,7 @@
   services.printing.drivers = with pkgs; [
     samsungUnifiedLinuxDriver
     gutenprint
+    brlaser
   ];
 
   # Enable sound.
@@ -81,10 +90,11 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.extraConfig = "
-  [General]
-  Enable=Source,Sink,Media,Socket
-";
+  hardware.bluetooth.config = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -100,6 +110,8 @@
 
   services.gnome3.gnome-keyring.enable = true;
 
+  services.xserver.wacom.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
   #   isNormalUser = true;
@@ -110,6 +122,6 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.09"; # Did you read the comment?
+  system.stateVersion = "20.09"; # Did you read the comment?
 
 }
